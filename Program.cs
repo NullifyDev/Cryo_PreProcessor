@@ -1,3 +1,4 @@
+/* // file commented out to avoid confliction with Cryo's Program.cs (not to be confused with this project "Cryo_PreProcessor")
 ﻿using System.Runtime.InteropServices;
 
 namespace Cryo.PreProcessor;
@@ -34,3 +35,4 @@ public class Program
                 System.Console.WriteLine(o.ToString());
     }
 }
+*/
