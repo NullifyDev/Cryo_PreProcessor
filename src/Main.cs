@@ -1,4 +1,4 @@
-namespace Cryo;
+namespace Cryo.PreProcessor;
 
 public class PreProcessor
 {
@@ -8,8 +8,8 @@ public class PreProcessor
     public IEnumerable<Object> GetMethods(string file) {
         foreach (var line in File.ReadAllLines(file)) {
             var n = GetMethod(file, line);
-            if (n is Cryo.Method)
-                yield return (n as Cryo.Method)!;
+            if (n is Cryo.PreProcessor.Method)
+                yield return (n as Cryo.PreProcessor.Method)!;
         }
     }
 

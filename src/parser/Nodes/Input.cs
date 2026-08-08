@@ -1,12 +1,10 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace Cryo;
+namespace Cryo.PreProcessor;
 
 public partial class Expression 
 {
     public record Input : Node
     {
-        public Cryo.Data? Data;
+        public Cryo.PreProcessor.Data? Data;
 
         public Input(string file, int line, int col, DataTypeKind? type = null, object? value = null) : base(file, line, col)
         {

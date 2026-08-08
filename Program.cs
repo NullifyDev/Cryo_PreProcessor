@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Cryo;
+namespace Cryo.PreProcessor;
 
 public class Program
 {
