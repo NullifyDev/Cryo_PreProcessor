@@ -1,3 +1,5 @@
+namespace Cryo.PreProcessor;
+
 public enum TokenType
 {
     Identifier,
