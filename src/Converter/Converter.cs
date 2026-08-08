@@ -8,7 +8,6 @@ public class Converter
 
     public Converter(IEnumerable<Node> nodes)
     {
-
         this.node = nodes.GetEnumerator();
     }
 
@@ -33,14 +32,11 @@ public class Converter
     }
 
     private Object ConvertOnce(Node node)
-    {
-        return node switch
-        {
+        => node switch {
             Expression.Object   o => o.Obj,
             Expression.Register r => new Register(r.Id, new Data(r.Data!.Type)),
             Expression.Data     d => new Data(d.Type),
             Expression.Input    i => new Input(i.Data!),
                                 _ => new Error(ErrorType.UnknownObject)
         };
-    }
 }

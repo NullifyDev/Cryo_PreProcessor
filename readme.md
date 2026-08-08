@@ -50,7 +50,7 @@ The following syntax, taken from [Haskell](https://www.haskell.org/), is as foll
 
 ##
 
-The following is how it should look like as an example, which can be found in the [Core library of Cryo](https://github.com/NullifyDev/Cryo/blob/main/lib/core/core.json):
+The following is how it should look like as an example, which can be found in the [Core library of Cryo](https://github.com/NullifyDev/Cryo/blob/main/lib/core/core.json) (file is to be updated):
 ```
 none  -> int
 int   -> none
