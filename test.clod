@@ -1,1 +1,4 @@
-none -> int
+input -> rsi:str
+int -> none
+str -> rsi
+str -> none

@@ -13,13 +13,13 @@ public partial class Expression
                       ?? throw new Exception($"Unknown register {Register.GetRegister(register)}");
 
             this.Id = (RegType)r;
-            this.Data = type == null ? null : new Data(file, line, col, type.ToString());
+            this.Data = type == null ? null : new Data(file, line, col, type.ToString() ?? "Int");
         }
 
         public Register(string file, int line, int col, RegType register, DataTypeKind? type = null) : base(file, line, col)
         {
             this.Id = register;
-            this.Data = type == null ? null : new Data(file, line, col, type.ToString());
+            this.Data = type == null ? null : new Data(file, line, col, type.ToString() ?? "Int");
         }
 
         public static RegType? GetRegister(string r) => r.ToLower() switch
@@ -70,6 +70,6 @@ public partial class Expression
         }
 
         public override string ToString()
-        => $"Register: {this.Id} ({this.Data.Type})";
+            => this.Data == null ? $"Register: {this.Id} (null)" : $"Register: {this.Id} ({this.Data.Type.ToString().ToLower()})";
     }
 }

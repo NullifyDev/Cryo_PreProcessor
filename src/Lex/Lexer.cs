@@ -6,10 +6,10 @@ public class Lexer
     private int line, col, curr;
     private Dictionary<string, TokenType> keyword;
 
-    public Lexer(string file)
+    public Lexer(string file, string src)
     {
         this.file = file;
-        this.contents = File.ReadAllText(file);
+        this.contents = src;
         this.curr = 0;
         this.line = 1;
         this.col  = 1;

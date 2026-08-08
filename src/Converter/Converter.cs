@@ -37,9 +37,9 @@ public class Converter
         return node switch
         {
             Expression.Object   o => o.Obj,
-            Expression.Register r => new Register(r.Id, new Data(r.Data.Type)),
+            Expression.Register r => new Register(r.Id, new Data(r.Data!.Type)),
             Expression.Data     d => new Data(d.Type),
-            Expression.Input    i => new Input(i.Data),
+            Expression.Input    i => new Input(i.Data!),
                                 _ => new Error(ErrorType.UnknownObject)
         };
     }

@@ -1,9 +1,3 @@
-using System.Collections;
-using System.Diagnostics.Contracts;
-using System.IO.Compression;
-using System.Security.Cryptography;
-using Cryo;
-
 namespace Cryo;
 
 public class Parser 
@@ -40,21 +34,23 @@ public class Parser
                 //     this.pastNodes.TryPop(out n);
                 //     yield return n ?? new Expression.EOF(n.file, n.line, n.col);
                 //     break;
-
-                // case Expression.Data:
-                
                 case Expression.Continue:
                     continue;
 
+                case Expression.Data d:
+                    if (d  == null) 
+                        continue;
 
+                    break;
+                    
                 case Expression.Input i: 
                     if (i.Data == null) 
                         continue;
-                    
+
                     break;
 
                 case Expression.Register r:
-                    if (r.Data == null) 
+                    if (r.Data == null)
                         continue;
 
                     break;
