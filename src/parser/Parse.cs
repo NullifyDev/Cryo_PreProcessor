@@ -47,11 +47,24 @@ public class Parser
                     if (i.Data == null) 
                         continue;
 
+                    if (i.Data.Type == DataTypeKind.None)
+                    {
+                        Console.WriteLine($"Error: {i.file}:({i.line}:{i.col}): Inputs must have any data type other None");
+                        Environment.Exit(1);
+                    }
+                    
                     break;
 
                 case Expression.Register r:
                     if (r.Data == null)
                         continue;
+
+                    if (r.Data.Type == DataTypeKind.None) 
+                    {
+                        Console.WriteLine("Error: Registers must have any data type other None");
+                        Environment.Exit(1);
+                    }
+            
 
                     break;
             }
@@ -94,7 +107,7 @@ public class Parser
                 this.pastNodes.Push(r);
                 n = Next(1).Type == TokenType.Colon 
                     ? ParseOnce(Peek())
-                    : new Expression.Register(tok.File, tok.Line, tok.Col, tok.Lex, DataTypeKind.Int);
+                    : new Expression.Register(tok.File, tok.Line, tok.Col, tok.Lex, DataTypeKind.None);
                 break;
 
             case TokenType.Input:
@@ -122,7 +135,7 @@ public class Parser
                 {
                     Expression.Register rr => new Expression.Register(tok.File, tok.Line, tok.Col, rr.Id, ri!.Type),
                     Expression.Input    ii => new Expression.Input(tok.File, tok.Line, tok.Col, ri!.Type, ri.Value),
-                                        _  => throw new Exception($"Expected either a register or an input on the left and a data type on the right of ':' - got \"{left.GetType().FullName}\":\"{right.GetType().FullName}\" (Parse.cs L111)")
+                                        _  => throw new Exception($"Expected either a register or an input on the left and a data type on the right of ':' - got \"{left.GetType().FullName}\":\"{right.GetType().FullName}\" (Parse.cs L137)")
                 };
                 break;
 
@@ -132,7 +145,7 @@ public class Parser
                     switch (n)
                     {
                         case Expression.Input inp:
-                            inp.Data = new(DataTypeKind.Str, null);
+                            inp.Data = new(DataTypeKind.None, null);
                             break;
 
                         case Expression.Register reg:

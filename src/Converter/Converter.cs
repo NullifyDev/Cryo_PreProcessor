@@ -23,9 +23,10 @@ public class Converter
 
             Object no = ConvertOnce(n);
             
-            if (no is Error) 
-                throw new Exception((no as Error)!.Type.ToString());
-            
+            if (no is Error) {
+                var e = (no as Error);
+                throw new Exception($"{e.Message}");
+            }
             objs.Add(no);
         }
         yield return new Method(objs[objs.Count()-1], objs.Count > 1 ? objs.ToArray()[0..^1] : null);
@@ -37,6 +38,6 @@ public class Converter
             Expression.Register r => new Register(r.Id, new Data(r.Data!.Type)),
             Expression.Data     d => new Data(d.Type),
             Expression.Input    i => new Input(i.Data!),
-                                _ => new Error(ErrorType.UnknownObject)
+                                _ => new Error(ErrorType.UnknownObject, $"Unknown Object: {node}")
         };
 }

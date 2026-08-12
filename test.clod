@@ -1,4 +1,4 @@
-input -> rsi:str
-int -> none
-str -> rsi
-str -> none
+input:str -> rsi:str
+rax:int -> none
+rax:str -> esi:int
+rax:str -> none

@@ -13,6 +13,6 @@ public partial class Expression
             this.Type = token.Type;
         }
         public override string ToString()
-        => $"Unknown";
+        => $"Unknown: {this.Type} ({this.Lex})";
     }
 }
